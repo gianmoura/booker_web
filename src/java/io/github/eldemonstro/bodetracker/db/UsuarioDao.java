@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package io.github.eldemonstro.bodetracker.db;
 
 import io.github.eldemonstro.bodetracker.util.ConexaoDB;
@@ -16,7 +12,10 @@ import io.github.eldemonstro.bodetracker.bean.Usuario;
 
 /**
  *
- * @author ProfAlexandre
+ * @author Fabricio Bezerra (eldemonstro.github.io)
+ * Qurery do mysql:
+ * CREATE DATABASE IF NOT EXISTS bodetracker
+ * CREATE TABLE IF NOT EXISTS `BodeTracker`.`usuarios` (`id` INT NOT NULL AUTO_INCREMENT, `nome` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL, `senha` VARCHAR(255) NOT NULL, `tipo` VARCHAR(45) NOT NULL, PRIMARY KEY (`id`)) ENGINE = InnoDB;
  */
 public class UsuarioDao {
 
@@ -63,9 +62,9 @@ public class UsuarioDao {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                usu.setId(rs.getInt(1));
-                usu.setEmail(rs.getString(2));
-                usu.setNome(rs.getString(3));
+                usu.setId(rs.getLong(1));
+                usu.setNome(rs.getString(2));
+                usu.setEmail(rs.getString(3));
                 usu.setSenha(rs.getString(4));
                 usu.setTipo(rs.getString(5));
             }
@@ -135,16 +134,16 @@ public class UsuarioDao {
     }
 
     public Usuario altera(Usuario usu) throws SQLException {
-        String sql = "UPDATE usuarios SET email = ?, nome = ?, senha = ?, tipo = ? WHERE id = ?";
+        String sql = "UPDATE usuarios SET nome = ?, senha = ?, tipo = ? WHERE id = ?";
+        System.out.println(usu.getId());
         // seta os valores
         try ( // prepared statement para inserção
                 PreparedStatement stmt = c.prepareStatement(sql)) {
             // seta os 
-            stmt.setString(1, usu.getEmail());
-            stmt.setString(2, usu.getNome());
-            stmt.setString(3, usu.getSenha());
-            stmt.setString(4, usu.getTipo());
-            stmt.setLong(5, usu.getId());
+            stmt.setString(1, usu.getNome());
+            stmt.setString(2, usu.getSenha());
+            stmt.setString(3, usu.getTipo());
+            stmt.setLong(4, usu.getId());
             // executa
             stmt.execute();
         }

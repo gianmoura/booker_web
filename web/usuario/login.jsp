@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registrar - Bode Tracker</title>
+        <title>Login - Bode Tracker</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -32,23 +32,14 @@
         <br>
         <div class="container">
             <h1>Registrar:</h1>
-            <form action="incluir.jsp" method="POST">
+            <form action="entrar.jsp" method="POST">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input required type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Seu email">
-                    <small id="emailHelp" class="form-text text-muted">Nós não vamos compartilhar seu email com ninguém</small>
-                </div>
-                <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input required type="input" class="form-control" id="nome"  name="nome" placeholder="Nome">
                 </div>
                 <div class="form-group">
                     <label for="senha">Senha:</label>
                     <input required type="password" class="form-control" name="senha" id="senha" placeholder="Senha">
-                </div>
-                <div class="form-group">
-                    <label for="confirmarSenha">Confirme a sua senha:</label>
-                    <input required type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme senha">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

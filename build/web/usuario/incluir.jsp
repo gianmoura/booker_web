@@ -1,19 +1,26 @@
 <%@page import="io.github.eldemonstro.bodetracker.controller.UsuarioController" %>
 <%@page import="io.github.eldemonstro.bodetracker.bean.Usuario" %>
-<% 
+<%
     String email = request.getParameter("email");
     String name = request.getParameter("nome");
     String senha = request.getParameter("senha");
     String confirmarSenha = request.getParameter("confirmarSenha");
-    String message;
-    if (senha != confirmarSenha) {
-        response.sendRedirect("registrar.jsp");
+    String redirect = "registrar.jsp";
+    if (!senha.equals(confirmarSenha)) {
+        redirect = "registrar.jsp";
+    } else {
+        UsuarioController usuControl = new UsuarioController();
+        Usuario usu = usuControl.consultar(email);
+        if (email.equalsIgnoreCase(usu.getEmail())) {
+            redirect = "registrar.jsp";
+        } else {
+            usu.setSenha(senha);
+            usu.setNome(name);
+            usu.setEmail(email);
+            usu.setTipo("admin");
+            usuControl.incluir(usu);
+            redirect = "../index.jsp";
+        }
     }
-    message = confirmarSenha + " " + senha;
-    UsuarioController usuControl = new UsuarioController();
-    Usuario usu = usuControl.consultar(email);
-    //if(usu.getEmail() != email) {
-      //  message = "Email not found in database, you can continue";
-    //}
+    response.sendRedirect(redirect);
 %>
-<h1><%=message%></h1>

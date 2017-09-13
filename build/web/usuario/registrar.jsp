@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login - Bode Tracker</title>
+        <title>Registrar - Bode Tracker</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -39,15 +39,15 @@
                     <small id="emailHelp" class="form-text text-muted">Nós não vamos compartilhar seu email com ninguém</small>
                 </div>
                 <div class="form-group">
-                    <label for="nome">Nome</label>
+                    <label for="nome">Nome:</label>
                     <input required type="input" class="form-control" id="nome"  name="nome" placeholder="Nome">
                 </div>
                 <div class="form-group">
-                    <label for="senha">Senha</label>
+                    <label for="senha">Senha:</label>
                     <input required type="password" class="form-control" name="senha" id="senha" placeholder="Senha">
                 </div>
                 <div class="form-group">
-                    <label for="confirmarSenha">Confirme a sua senha</label>
+                    <label for="confirmarSenha">Confirme a sua senha:</label>
                     <input required type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme senha">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>

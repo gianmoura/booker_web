@@ -1,15 +1,13 @@
-<%-- 
-    Document   : registrar
-    Created on : 01/09/2017, 12:02:51
-    Author     : demon
---%>
-
+<%@page import="io.github.eldemonstro.bodetracker.bean.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    Usuario usu = (Usuario) session.getAttribute("usuario");
+%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registrar - Bode Tracker</title>
+        <title>Editar - Bode Tracker</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -23,24 +21,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav">
                         <li><a class="nav-link" href="${pageContext.request.contextPath}/">Inicio</a></li>
+                            <% if (usu == null) { %>
                         <li><a class="nav-link" href="${pageContext.request.contextPath}/usuario/login.jsp">Login</a></li>
                         <li><a class="nav-link" href="${pageContext.request.contextPath}/usuario/registrar.jsp">Registrar</a></li>
-                    </ul>
+                            <% } else { %>
+                        <li><a class="nav-link" href="${pageContext.request.contextPath}/usuario/editar.jsp">Editar</a></li>
+                        <li><a class="nav-link" href="${pageContext.request.contextPath}/usuario/sair.jsp">Sair</a></li>
+                        <% }%></ul>
                 </div>
             </nav>
         </header>
         <br>
         <div class="container">
             <h1>Registrar:</h1>
-            <form action="incluir.jsp" method="POST">
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input required type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Seu email">
-                    <small id="emailHelp" class="form-text text-muted">Nós não vamos compartilhar seu email com ninguém</small>
-                </div>
+            <form action="alterar.jsp" method="POST">
                 <div class="form-group">
                     <label for="nome">Nome:</label>
-                    <input required type="input" class="form-control" id="nome"  name="nome" placeholder="Nome">
+                    <input required type="input" class="form-control" id="nome" name="nome" value="${usu.getNome()}">
                 </div>
                 <div class="form-group">
                     <label for="senha">Senha:</label>
@@ -51,6 +48,7 @@
                     <input required type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme senha">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-danger" href="excluir.jsp">Excluir</a>
             </form>
         </div>
 
