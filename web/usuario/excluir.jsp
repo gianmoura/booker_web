@@ -1,6 +1,6 @@
-<%@page import="io.github.eldemonstro.bodetracker.controller.UsuarioController"%>
-<%@page import="io.github.eldemonstro.bodetracker.bean.Usuario"%>
-<%@page import="io.github.eldemonstro.bodetracker.db.UsuarioDao"%>
+<%@page import="booker.controller.UsuarioController"%>
+<%@page import="booker.bean.Usuario"%>
+<%@page import="booker.db.UsuarioDao"%>
 <%
     UsuarioController usuControll = new UsuarioController();
     Usuario usu = (Usuario) session.getAttribute("usuario");

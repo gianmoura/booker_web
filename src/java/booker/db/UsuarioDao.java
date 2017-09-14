@@ -1,14 +1,14 @@
 
-package io.github.eldemonstro.bodetracker.db;
+package booker.db;
 
-import io.github.eldemonstro.bodetracker.util.ConexaoDB;
+import booker.conexao.ConexaoDB;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
-import io.github.eldemonstro.bodetracker.bean.Usuario;
+import booker.bean.Usuario;
 
 /**
  *

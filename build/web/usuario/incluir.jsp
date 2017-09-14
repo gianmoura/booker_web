@@ -1,5 +1,5 @@
-<%@page import="io.github.eldemonstro.bodetracker.controller.UsuarioController" %>
-<%@page import="io.github.eldemonstro.bodetracker.bean.Usuario" %>
+<%@page import="booker.controller.UsuarioController"%>
+<%@page import="booker.bean.Usuario"%>
 <%
     String email = request.getParameter("email");
     String name = request.getParameter("nome");

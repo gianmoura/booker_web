@@ -9,13 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login - Bode Tracker</title>
+        <title>Login</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Bode Tracker</a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/">Booker</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -30,7 +30,7 @@
             </nav>
         </header>
         <br>
-        <div class="container">
+        <div class="container col-md-8">
             <h1>Registrar:</h1>
             <form action="entrar.jsp" method="POST">
                 <div class="form-group">
@@ -41,7 +41,7 @@
                     <label for="senha">Senha:</label>
                     <input required type="password" class="form-control" name="senha" id="senha" placeholder="Senha">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Entrar</button>
             </form>
         </div>
 

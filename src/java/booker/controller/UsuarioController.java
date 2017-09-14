@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.github.eldemonstro.bodetracker.controller;
+package booker.controller;
 
-import io.github.eldemonstro.bodetracker.bean.Usuario;
-import io.github.eldemonstro.bodetracker.db.UsuarioDao;
+import booker.bean.Usuario;
+import booker.db.UsuarioDao;
 import java.sql.SQLException;
         
 /**

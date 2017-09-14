@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.github.eldemonstro.bodetracker.util;
+package booker.conexao;
 
 import com.mysql.jdbc.*;
 import java.sql.DriverManager;
@@ -17,9 +17,9 @@ public class ConexaoDB {
     {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String url ="jdbc:mysql://localhost:3306/bodetracker";
+            String url ="jdbc:mysql://localhost:3306/booker";
             String usuario = "root";
-            String senha = "admin";
+            String senha = "system";
             return (Connection) DriverManager.getConnection(url,usuario,senha);
         } catch (SQLException e) {
             throw new RuntimeException(e);

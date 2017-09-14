@@ -1,4 +1,4 @@
-<%@page import="io.github.eldemonstro.bodetracker.bean.Usuario"%>
+<%@page import="booker.bean.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Usuario usu = (Usuario) session.getAttribute("usuario");
@@ -7,12 +7,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>BODE TRACKER -- WOOHOO</title>
+        <title>Booker</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Bode Tracker</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/">Booker</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -32,15 +32,11 @@
         <br>
         <div class="container">
             <div class="jumbotron">
-                <h1>Bode Tracker</h1>
-                <p class="lead">BEM VINDO AO BODE TRACKER, TODO MUNDO VAI MORRER</p>
+                <h1>Booker</h1>
+                <p class="lead">BEM VINDO AO BOOKER</p>
                 <% if (usu != null) { %>
                 <p>BEM VINDO <%=usu.getNome()%></p>
                 <% }%>
-                <p>Essa desgraça aqui faz a conexão com o banco de dados via jsp
-                    pra fazer um CRUD do caralho (mas que merda hein) e demora muito 
-                    pra resolver as parada, se tu quer interagir nesse projeto boa 
-                    sorte :v</p>
                 <div class="center-block">
                     <% if (usu == null) { %>
                     <a class="btn btn-default" href="${pageContext.request.contextPath}/usuario/login.jsp">Login</a>

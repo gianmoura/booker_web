@@ -1,4 +1,4 @@
-<%@page import="io.github.eldemonstro.bodetracker.bean.Usuario"%>
+<%@page import="booker.bean.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Usuario usu = (Usuario) session.getAttribute("usuario");
@@ -7,13 +7,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Editar - Bode Tracker</title>
+        <title>Editar</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Bode Tracker</a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/">Booker</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -32,7 +32,7 @@
             </nav>
         </header>
         <br>
-        <div class="container">
+        <div class="container col-md-8">
             <h1>Registrar:</h1>
             <form action="alterar.jsp" method="POST">
                 <div class="form-group">
@@ -47,7 +47,7 @@
                     <label for="confirmarSenha">Confirme a sua senha:</label>
                     <input required type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme senha">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
                 <a class="btn btn-danger" href="excluir.jsp">Excluir</a>
             </form>
         </div>
