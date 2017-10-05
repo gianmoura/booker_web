@@ -23,7 +23,8 @@
                     <li><a class="nav-link" href="${pageContext.request.contextPath}/usuario/login.jsp">Login</a></li>
                     <li><a class="nav-link" href="${pageContext.request.contextPath}/usuario/registrar.jsp">Registrar</a></li>
                     <% } else { %>
-                    <li><a class="nav-link" href="${pageContext.request.contextPath}/usuario/editar.jsp">Editar</a></li>
+                    <li><a class="nav-link" href="${pageContext.request.contextPath}/usuario/editar.jsp">Perfil</a></li>
+                    <li><a class="nav-link" href="${pageContext.request.contextPath}/livros/livros.jsp">Livros</a></li>
                     <li><a class="nav-link" href="${pageContext.request.contextPath}/usuario/sair.jsp">Sair</a></li>
                     <% }%>
                 </ul>
@@ -33,9 +34,8 @@
         <div class="container">
             <div class="jumbotron">
                 <h1>Booker</h1>
-                <p class="lead">BEM VINDO AO BOOKER</p>
                 <% if (usu != null) { %>
-                <p>BEM VINDO <%=usu.getNome()%></p>
+                <p>BEM VINDO AO BOOKER <%=usu.getNome()%></p>
                 <% }%>
                 <div class="center-block">
                     <% if (usu == null) { %>

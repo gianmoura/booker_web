@@ -19,7 +19,7 @@ public class ConexaoDB {
             Class.forName("com.mysql.jdbc.Driver");
             String url ="jdbc:mysql://localhost:3306/booker";
             String usuario = "root";
-            String senha = "system";
+            String senha = "admin";
             return (Connection) DriverManager.getConnection(url,usuario,senha);
         } catch (SQLException e) {
             throw new RuntimeException(e);

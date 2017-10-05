@@ -3,8 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/lab3aluno/Documents/NetBeansProjects/BodeTracker/web/usuario/excluir.jsp</file>
-            <file>file:/C:/Users/lab3aluno/Documents/NetBeansProjects/BodeTracker/src/java/booker/conexao/ConexaoDB.java</file>
+            <file>file:/C:/Users/Moura/Documents/NetBeansProjects/Booker/src/java/booker/conexao/ConexaoDB.java</file>
+            <file>file:/C:/Users/Moura/Documents/NetBeansProjects/Booker/web/css/bootstrap.min.css</file>
+            <file>file:/C:/Users/Moura/Documents/NetBeansProjects/Booker/web/usuario/entrar.jsp</file>
+            <file>file:/C:/Users/Moura/Documents/NetBeansProjects/Booker/web/usuario/alterar.jsp</file>
+            <file>file:/C:/Users/Moura/Documents/NetBeansProjects/Booker/web/usuario/editar.jsp</file>
+            <file>file:/C:/Users/Moura/Documents/NetBeansProjects/Booker/web/usuario/excluir.jsp</file>
+            <file>file:/C:/Users/Moura/Documents/NetBeansProjects/Booker/web/usuario/registrar.jsp</file>
+            <file>file:/C:/Users/Moura/Documents/NetBeansProjects/Booker/web/index.jsp</file>
+            <file>file:/C:/Users/Moura/Documents/NetBeansProjects/Booker/web/usuario/login.jsp</file>
+            <file>file:/C:/Users/Moura/Documents/NetBeansProjects/Booker/web/usuario/incluir.jsp</file>
         </group>
     </open-files>
 </project-private>

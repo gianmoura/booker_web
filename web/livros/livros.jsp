@@ -1,13 +1,24 @@
+<%-- 
+    Document   : livros
+    Created on : 04/10/2017, 20:39:43
+    Author     : Moura
+--%>
+
+<%@page import="java.util.List"%>
 <%@page import="booker.bean.Usuario"%>
+<%@page import="booker.bean.Livros"%>
+<%@page import="booker.controller.LivrosController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Usuario usu = (Usuario) session.getAttribute("usuario");
+    LivrosController livroControl = new LivrosController();
+    List<Livros> livros = livroControl.getLivros(usu);
 %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Editar</title>
+        <title>Livros</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -17,10 +28,10 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="modalLabel">Excluir Perfil</h4>
+                        <h4 class="modal-title" id="modalLabel">Excluir Livro</h4>
                     </div>
                     <div class="modal-body">
-                        Deseja realmente excluir permanentemente seu perfil?
+                        Deseja realmente excluir este Livro?
                     </div>
                     <div class="modal-footer">
                         <a class="btn btn-danger btn-ok">Excluir</a>
@@ -51,31 +62,70 @@
             </nav>
         </header>
         <br>
-        
-        <div class="container col-md-8">
-            <h1>Editar</h1>
-            <form action="alterar.jsp" method="POST">
-                <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input required type="input" class="form-control" id="nome" name="nome" value="${usu.getNome()}">
-                </div>
-                <div class="form-group">
-                    <label for="senha">Senha:</label>
-                    <input required type="password" class="form-control" name="senha" id="senha" placeholder="Senha">
-                </div>
-                <div class="form-group">
-                    <label for="confirmarSenha">Confirme a sua senha:</label>
-                    <input required type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme senha">
-                </div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
-                <a class="btn btn-danger" href="#" data-href="${pageContext.request.contextPath}/usuario/excluir.jsp" data-toggle="modal" data-target="#delete-modal" >Excluir Perfil</a>
-                
-            </form>
+        <div class="container col-md-10">
+            
+            <div id="main" class="container-fluid">
+                <div id="top" class="row">
+                    <div class="col-md-3">
+                        <h2>Meus Livros</h2>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="input-group h2">
+                            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar livros">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">
+                                    Buscar
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <a href="add.html" class="btn btn-primary pull-right h2">Adicionar</a>
+                    </div>
+                </div> <!-- /#top -->
+
+                <hr />
+                <div id="list" class="row">
+                    <div class="table-responsive col-md-12">
+                        <table class="table table-striped" cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>TITULO</th>
+                                    <th>AUTOR</th>
+                                    <th class="actions">Ações</th>
+                                 </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <% for (Livros livro : livros) { %>
+                                    <tr>
+                                        <td><%=livro.getId() %></td>
+                                        <td><%=livro.getTitulo() %></td>
+                                        <td><%=livro.getAutor() %></td>
+                                        <td class="actions">
+                                            <a class="btn btn-warning btn-xs" href="#">Editar</a>
+                                            <a class="btn btn-danger" href="#" data-href="${pageContext.request.contextPath}/livros/excluir.jsp?id=<%=livro.getId() %>" data-toggle="modal" data-target="#delete-modal" >Excluir</a>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                         </table>
+
+                     </div>
+                </div> <!-- /#list -->
+
+                <div id="bottom" class="row">
+
+                </div> <!-- /#bottom -->
+            </div>  <!-- /#main -->
         </div>
+        
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-        
         
         <script>
             $('#delete-modal').on('show.bs.modal', function(e) {
@@ -84,5 +134,10 @@
                 $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
             });
         </script>
+        <!--
+        <script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+        -->
     </body>
 </html>
+

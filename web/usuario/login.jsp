@@ -30,8 +30,8 @@
             </nav>
         </header>
         <br>
-        <div class="container col-md-8">
-            <h1>Registrar:</h1>
+        <div class="container col-md-4">
+            <h1>Entrar</h1>
             <form action="entrar.jsp" method="POST">
                 <div class="form-group">
                     <label for="email">Email:</label>

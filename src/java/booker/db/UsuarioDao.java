@@ -12,11 +12,9 @@ import booker.bean.Usuario;
 
 /**
  *
- * @author Fabricio Bezerra (eldemonstro.github.io)
- * Qurery do mysql:
- * CREATE DATABASE IF NOT EXISTS bodetracker
- * CREATE TABLE IF NOT EXISTS `BodeTracker`.`usuarios` (`id` INT NOT NULL AUTO_INCREMENT, `nome` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL, `senha` VARCHAR(255) NOT NULL, `tipo` VARCHAR(45) NOT NULL, PRIMARY KEY (`id`)) ENGINE = InnoDB;
- */
+ * @author Moura
+ * 
+*/
 public class UsuarioDao {
 
     private final Connection c;
