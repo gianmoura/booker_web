@@ -137,7 +137,7 @@ public class LivrosDao {
 
     }
     
-    public Livros inseri(Livros livro, Usuario usu) throws SQLException {
+    public Livros inseri(Livros livro) throws SQLException {
         String sql = "insert into Livros" + " (titulo, autor, idusuario)" + " values (?,?,?)";
 
         // seta os valores
@@ -146,7 +146,7 @@ public class LivrosDao {
             // seta os valores
             stmt.setString(1, livro.getTitulo());
             stmt.setString(2, livro.getAutor());
-            stmt.setLong(3, usu.getId());
+            stmt.setLong(3, livro.getIdUsuario());
             // executa
             stmt.execute();
             stmt.close();
@@ -172,8 +172,7 @@ public class LivrosDao {
 
     public Livros altera(Livros livro) throws SQLException {
         String sql = "UPDATE Livros SET titulo = ?, autor = ? WHERE id = ?";
-        System.out.println(livro.getId());
-        // seta os valores
+        
         try ( // prepared statement para inserção
             PreparedStatement stmt = c.prepareStatement(sql)) {
             // seta os 

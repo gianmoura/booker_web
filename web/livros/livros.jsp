@@ -12,13 +12,16 @@
 <%
     Usuario usu = (Usuario) session.getAttribute("usuario");
     LivrosController livroControl = new LivrosController();
-    List<Livros> livros = livroControl.getLivros(usu);
+    List<Livros> livros = livroControl.getLista(usu);
+    String debug;
 %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html">
+        <meta charset=UTF-8">
         <title>Livros</title>
+        
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -36,6 +39,63 @@
                     <div class="modal-footer">
                         <a class="btn btn-danger btn-ok">Excluir</a>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Add Livro -->
+        <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Adicionar"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalLabel">Adicionar Livro</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="incluir.jsp" method="POST">
+                            <div class="form-group">
+                                <label for="Titulo">Titulo:</label>
+                                <input required type="input" class="form-control" id="titulo" name="titulo" aria-describedby="titulo" placeholder="Titulo do livro">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="autor">Autor:</label>
+                                <input required type="input" class="form-control" id="autor"  name="autor" placeholder="Autor do livro">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Adicionar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Edit Livro -->
+        <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Adicionar"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalLabel">Editar Livro</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="editar.jsp" method="POST">
+                            <div class="form-group">
+                                <label for="Titulo">Titulo:</label>
+                                <input required type="input" class="form-control" id="titulo" name="titulo" aria-describedby="titulo" placeholder="Titulo do livro">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="autor">Autor:</label>
+                                <input required type="input" class="form-control" id="autor"  name="autor" placeholder="Autor do livro">
+                        
+                            </div>
+                            <div class="form-group">
+                                <input required type="hidden" class="form-control teste" id="id"  name="id" >
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-edit">Salvar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -82,7 +142,7 @@
                     </div>
 
                     <div class="col-md-3">
-                        <a href="add.html" class="btn btn-primary pull-right h2">Adicionar</a>
+                        <a href="#" class="btn btn-primary pull-right h2" data-toggle="modal" data-target="#add-modal" >Adicionar</a>
                     </div>
                 </div> <!-- /#top -->
 
@@ -106,7 +166,7 @@
                                         <td><%=livro.getTitulo() %></td>
                                         <td><%=livro.getAutor() %></td>
                                         <td class="actions">
-                                            <a class="btn btn-warning btn-xs" href="#">Editar</a>
+                                            <a class="btn btn-warning btn-xs" href="#" data-href="<%=livro.getId() %>" data-toggle="modal" data-target="#edit-modal">Editar</a>
                                             <a class="btn btn-danger" href="#" data-href="${pageContext.request.contextPath}/livros/excluir.jsp?id=<%=livro.getId() %>" data-toggle="modal" data-target="#delete-modal" >Excluir</a>
                                         </td>
                                     </tr>
@@ -132,6 +192,11 @@
                 $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 
                 $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+            });
+        </script>
+        <script>
+            $('#edit-modal').on('show.bs.modal', function(e) {
+                $(this).find('.teste').attr('value', $(e.relatedTarget).data('href'));
             });
         </script>
         <!--

@@ -11,7 +11,6 @@ import booker.bean.Usuario;
 import booker.db.LivrosDao;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -28,7 +27,7 @@ public class LivrosController {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-    public List<Livros> getLivros(Usuario usuario) throws SQLException, ClassNotFoundException{
+    public List<Livros> getLista(Usuario usuario) throws SQLException, ClassNotFoundException{
         LivrosDao l = new LivrosDao();
         List<Livros> lista = l.busca(usuario);
         List<Livros> livros;
@@ -39,24 +38,27 @@ public class LivrosController {
         return livros;
     }
     
-    public Livros incluir(Livros livro, Usuario usu) throws SQLException, ClassNotFoundException {
+    public Livros getLivro(Long id) throws SQLException, ClassNotFoundException{
+        Livros livro = new Livros();
+        LivrosDao l = new LivrosDao();
+        livro = l.busca(id);
+        return livro;
+    }
+    
+    public Livros incluir(Livros livro) throws SQLException, ClassNotFoundException {
         LivrosDao livroDAO = new LivrosDao();
-        Livros l = livroDAO.inseri(livro, usu);
+        Livros l = new Livros();
+        l = livroDAO.inseri(livro);
         return l;
     }
     
-    public Livros alterar(Livros livro) throws SQLException, ClassNotFoundException {
+    public void alterar(Livros livro) throws SQLException, ClassNotFoundException {
         LivrosDao livroDAO = new LivrosDao();
-        Livros l = livroDAO.altera(livro);
-        return l;
+        livroDAO.altera(livro);
     }
     
     public void exclui(Livros livro) throws SQLException, ClassNotFoundException{
         LivrosDao livroDAO = new LivrosDao();
         livroDAO.exclui(livro);
-    }
-
-    private void ForEach(List<Livros> lista) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
