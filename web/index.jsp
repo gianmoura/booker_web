@@ -33,17 +33,16 @@
         <br>
         <div class="container">
             <div class="jumbotron">
-                <h1>Booker</h1>
+                <h1>BOOKER</h1>
                 <% if (usu != null) { %>
-                <p>BEM VINDO AO BOOKER <%=usu.getNome()%></p>
+                <p>Bem Vindo ao Booker <%=usu.getNome()%></p>
                 <% }%>
                 <div class="center-block">
                     <% if (usu == null) { %>
                     <a class="btn btn-default" href="${pageContext.request.contextPath}/usuario/login.jsp">Login</a>
                     <a class="btn btn-default" href="${pageContext.request.contextPath}/usuario/registrar.jsp">Registrar</a>
                     <% } else { %>
-                    <a class="btn btn-default" href="${pageContext.request.contextPath}/usuario/editar.jsp">Editar</a>
-                    <a class="btn btn-default" href="${pageContext.request.contextPath}/usuario/sair.jsp">Sair</a>
+                    <a class="btn btn-default" href="${pageContext.request.contextPath}/livros/livros.jsp">Meus Livros</a>
 
                     <% } %>
                 </div>

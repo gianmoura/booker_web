@@ -81,15 +81,17 @@ public class LivrosDao {
     return livros;
     }
     
-    public List<Livros> lista(String text) throws SQLException {
+    public List<Livros> lista(String text, Usuario usu) throws SQLException {
         // usus: array armazena a lista de registros
-        List<Livros> livroLista = new ArrayList<>();
-
-        String sql = "select * from livros where titulo like ? or autor like ?";
+        List<Livros> livroLista;
+        livroLista = new ArrayList<>();
+        String sql = "select * from livros where titulo like ? or autor like ? and idUsuario = ?";
         // seta os valores
         try (PreparedStatement stmt = this.c.prepareStatement(sql)) {
             // seta os valores
             stmt.setString(1, "%" + text + "%");
+            stmt.setString(2, "%" + text + "%");
+            stmt.setLong(3, usu.getId());
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {

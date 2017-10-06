@@ -10,10 +10,18 @@
 <%@page import="booker.controller.LivrosController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    
     Usuario usu = (Usuario) session.getAttribute("usuario");
     LivrosController livroControl = new LivrosController();
-    List<Livros> livros = livroControl.getLista(usu);
-    String debug;
+    List<Livros> livros;
+    if(request.getParameter("busca") == null){
+        livros = livroControl.getLista(usu);
+    }else{
+        livros = livroControl.buscar(request.getParameter("busca"),usu);
+    }
+    
+    
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -131,14 +139,16 @@
                     </div>
 
                     <div class="col-md-6">
-                        <div class="input-group h2">
-                            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar livros">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" type="submit">
-                                    Buscar
-                                </button>
-                            </span>
-                        </div>
+                        <form action="livros.jsp" method="POST">
+                            <div class="input-group h2">
+                                <input name="busca" class="form-control" id="busca" type="text" placeholder="Titulo ou autor...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit">
+                                        Buscar
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
                     </div>
 
                     <div class="col-md-3">

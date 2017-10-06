@@ -27,6 +27,17 @@ public class LivrosController {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
+    public List<Livros> buscar(String text, Usuario usuario) throws SQLException, ClassNotFoundException{
+        LivrosDao l = new LivrosDao();
+        List<Livros> lista = l.lista(text,usuario);
+        List<Livros> livros;
+        livros = new ArrayList<>();
+        lista.forEach((livroLista) -> {
+            livros.add(livroLista);
+        });
+        return livros;
+    }
+    
     public List<Livros> getLista(Usuario usuario) throws SQLException, ClassNotFoundException{
         LivrosDao l = new LivrosDao();
         List<Livros> lista = l.busca(usuario);
